@@ -1,0 +1,15 @@
+rrt_configuration:
+  obstacle_config:
+    obstacle_num: 6
+    obstacle_scale_x: [2, 2, 7, 2, 5, 3]
+    obstacle_position_x: [8, 14, 16.5, 16, 2.5, 1.5]
+    obstacle_scale_y: [12, 12, 4, 2, 3, 7]
+    obstacle_position_y: [6, 14, 2, 9, 18.5, 13.5]
+    obstacle_scale_z: [0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+    obstacle_position_z: [0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+  rrt_config:
+    start_pose: [0, 0]
+    goal_pose: [18, 18]
+    incremental_distance: [1.5]
+    bias: [0.5]
+    iteration_count: 500
