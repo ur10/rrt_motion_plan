@@ -129,14 +129,15 @@ bool RRT::obstacleDetect( geometry_msgs::Point p1, geometry_msgs::Point p2, std:
             float obs_xr = (obs.pose.position.x + obs.scale.x / 2) + 0.5;
             float obs_yb = (obs.pose.position.y - obs.scale.y / 2) - 0.5;
             float obs_yt = (obs.pose.position.y + obs.scale.y / 2) + 0.5;
-
-            //check for the bottom intersection
+            
+            // Check for intersection along the 4 sides.
+            
             bool bottom = lineIntersect(x1, y1, x2, y2, obs_xl, obs_yb, obs_xr, obs_yb);
-            //left intersect
+            
             bool left = lineIntersect(x1, y1, x2, y2, obs_xl, obs_yb, obs_xl, obs_yt);
-            //right intersect
+            
             bool right = lineIntersect(x1, y1, x2, y2, obs_xr, obs_yb, obs_xr, obs_yt);
-            //top intersect
+            
             bool top = lineIntersect(x1, y1, x2, y2, obs_xl, obs_yt, obs_xr, obs_yt);
 
             if (bottom || left || right || top) {
@@ -245,15 +246,15 @@ void RRT::move_bot( std::vector<Node*> goal_path )
 bool RRT::lineIntersect( float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4 )
 {
 
-        // calculate the distance to intersection point
-        float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
-        float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+       
+        float da = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+        float db = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
 
         // if uA and uB are between 0-1, lines are colliding
-        if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1) {
+        if (da >= 0 && da <= 1 && db >= 0 && db <= 1) {
 
-            float intersectionX = x1 + (uA * (x2 - x1));
-            float intersectionY = y1 + (uA * (y2 - y1));
+            float intersectionX = x1 + (da * (x2 - x1));
+            float intersectionY = y1 + (da * (y2 - y1));
 
             return true;
         }
