@@ -3,7 +3,7 @@ This repo contains a ROS-Rviz based implemntation of the RRT(Rapidly exploring r
 
 ## How to run?
 
-Clone the repo to your local catkin package and then build it from the top of your package through ``catkin_make``.
+Clone the repo to your local catkin package and checkout the `` master`` branch,  then build it from the top of your package through ``catkin_make``.
   After buildinfg the package type in the following commands in separate terminals.
    
    ``roscore`` for bringing up the ROS master.
