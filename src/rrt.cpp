@@ -62,8 +62,6 @@ Node* RRT::getNearestPoint(geometry_msgs::Point point )
      delta_y =  random_point.y - nearest_point.y;
      slope = std::atan2( delta_y, delta_x );
 
-     ROS_INFO("The nearest point is %f %f abd the slope is %f\n",nearest_point.x, nearest_point.y, slope);
-
      new_point.x = nearest_point.x + incremental_distance*std::cos( slope );
      new_point.y = nearest_point.y + incremental_distance*std::sin( slope );
     
@@ -76,7 +74,6 @@ Node* RRT::getNearestPoint(geometry_msgs::Point point )
 
         if( new_node != NULL ) {
              new_node->coordinate = new_point;
-             ROS_INFO(" The coordinates of the new node are %f %f \n ", new_node->coordinate.x, new_node->coordinate.y );
         }
      }
 
@@ -247,21 +244,7 @@ void RRT::move_bot( std::vector<Node*> goal_path )
 
 bool RRT::lineIntersect( float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4 )
 {
- /*   float num;
-    float den;
-    float x_intersection;
 
-    // line intersection formula
-    num = (x1*y2 - y1*x2)*(x3 - x4) - (x1 - x2)*(x3*y4 - y3*x4);
-    den = ( x1 - x2 )*( y3 - y4 ) - ( y1-y2 )*( x3*y4 - y3*x4 );
-
-    x_intersection = num/den;
-
-    if( ( x1<= x_intersection && x2 >= x_intersection ) || ( x2 <= x_intersection && x1 >= x_intersection ) ) 
-        return true;
-
-    return false;
-*/
         // calculate the distance to intersection point
         float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
         float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));

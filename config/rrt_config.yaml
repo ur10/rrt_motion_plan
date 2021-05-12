@@ -12,4 +12,4 @@ rrt_configuration:
     goal_pose: [18, 18]
     incremental_distance: [1.5]
     bias: [0.5]
-    iteration_count: 500
+    iteration_count: 3500

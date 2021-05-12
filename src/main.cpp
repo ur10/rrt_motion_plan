@@ -124,7 +124,6 @@ void initRviz(ros::Publisher marker_pub)
     marker_pub.publish(v_start);
     marker_pub.publish(v_end);
 
-    ROS_INFO("Initializing RViz\n");
 
 }
 
@@ -163,5 +162,5 @@ void addObstacle(ros::Publisher marker_pub)
           obsVec.push_back(obs[i]);
        }
 
-    ROS_INFO("Adding obstacles\n");
+
 }
