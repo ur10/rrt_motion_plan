@@ -4,7 +4,6 @@
 
 void addObstacle(ros::Publisher marker_pub);
 void initRviz(ros::Publisher marker_pub);
-//void botMove(geometry_msgs::Point start);
 
 double obstacle_num;
 std::vector<std::vector<double>> obstacle_scale(3);
